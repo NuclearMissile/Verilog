@@ -15,11 +15,12 @@ module simCounter4bit();
             reset = 0;
             cin = 0;
             clk = 0;
-            #100 reset=1; #100 cin=1;
+            #100 reset=1; 
+            #100 cin=1;
             #100 reset=0;
             #(100*20) cin=0;
             #100 cin=1;
             #(100*5) $stop;
         end
-    always #50 clk=~clk;
+    always #10 clk=~clk;
 endmodule // 
