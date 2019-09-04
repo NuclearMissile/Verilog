@@ -11,7 +11,6 @@ module RSA(
     reg flag;
     reg pow_bit;
     assign endflag = flag;
-
     wire slave_endflag;
     wire index = 31 - STATE;
 
