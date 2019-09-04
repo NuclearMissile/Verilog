@@ -19,7 +19,7 @@ module MM(
     wire[287:0] temp6 = temp5 + result + temp1;
     wire[255:0] result_next = temp6[287:32];
 
-    wire[22:0] index = 5'd32 << STATE;
+    reg[22:0] index;
     wire[7:0] index1 = index[7:0] - 1;
     wire[7:0] index2 = index[15:8] - 1;
     
@@ -27,6 +27,7 @@ module MM(
     assign result = result1;
 
     always @(posedge clk or posedge enable) begin
+        index <= 5'd32 << STATE;
         if (enable == 0) begin
             STATE <= 5'd0;
             endflag1 <= 0;
