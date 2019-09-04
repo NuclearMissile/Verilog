@@ -3,11 +3,11 @@
 module RSA_PBL(
     input clk,
     input rstn,
-    input [255:0] indata, //ˆÃ†•¶
-    input [31:0] pow, //”é–§Œ®d
+    input [255:0] indata, //ï¿½Ãï¿½ï¿½ï¿½
+    input [31:0] pow, //ï¿½é–§ï¿½ï¿½d
     input [255:0] modulos,
-    input [31:0] mp, //M'(N'‚Ì‰ºˆÊ32bit)
-    output [255:0] outdata,//•œ†Œ‹‰Ê
+    input [31:0] mp, //M'(N'ï¿½Ì‰ï¿½ï¿½ï¿½32bit)
+    output [255:0] outdata,//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     output end_flag
     );
   reg[5:0] state; //
@@ -17,7 +17,7 @@ module RSA_PBL(
   wire Slave_endflag;
   reg pow_bit;
   assign end_flag = flag;
-  //Slave‚ÉÚ‘±
+  //Slaveï¿½ÉÚ‘ï¿½
   Slave Slave1(.clk(clk),.en(en),.modulos(modulos),.mp(mp),.indata(indata),
                .multiplicand(answer),
                .endflag(Slave_endflag),.answer(outdata),.pow_bit(pow_bit));
@@ -25,7 +25,7 @@ module RSA_PBL(
      if(rstn == 0) begin //initial set
          state <= 6'd0;
          en <= 0;
-         answer <= 256'h212ba4f27ffffff5a2c62effffffffcdb939ffffffffff8a15ffffffffffff8e; //‰Šú’lŠÔˆá‚¦‚½
+         answer <= 256'h212ba4f27ffffff5a2c62effffffffcdb939ffffffffff8a15ffffffffffff8e; //ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½Ôˆá‚¦ï¿½ï¿½
          pow_bit <= pow[31]; 
          flag <= 0;   
      end else begin //rstn == 1
