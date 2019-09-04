@@ -53,7 +53,7 @@ module RSA(
                         ;
                     end
                 end
-            end
+            endcase
         end
     end
 
