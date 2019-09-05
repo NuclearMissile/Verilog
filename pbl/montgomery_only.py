@@ -13,7 +13,6 @@ def pow_by_montgomery_ladder(a, x, n): # a^x mod n
 
 
 def montgomery_divide(c1,c2,N): #(c*c)modN  divide alghorithm
-    k = 32 # size of 1block
     n = 8  # blocksize
     Nprime_under32 = int('0b11010111100101000011010111100101',0)
     c2_bin = bin(c2)

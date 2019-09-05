@@ -1,9 +1,9 @@
 `timescale 1ns/1ps
 
 module MM(
-    input clk, input enable, input[255:0] modulos, input[31:0] mp,
+    input clk, input en, input[255:0] modulos, input[31:0] mp,
     input[255:0] indata, input pow_bit, input[255:0] multiplicand,
-    output endflag, output[255:0] result 
+    output end_flag, output[255:0] answer 
 );
     reg[4:0] STATE;
     reg endflag1;
@@ -16,19 +16,19 @@ module MM(
     wire[31:0] temp3 = temp2[31:0];
     wire[31:0] temp4 = temp3 * mp;
     wire[287:0] temp5 = temp4 * modulos;
-    wire[287:0] temp6 = temp5 + result + temp1;
+    wire[287:0] temp6 = temp5 + answer + temp1;
     wire[255:0] result_next = temp6[287:32];
 
     reg[22:0] index;
     wire[7:0] index1 = index[7:0] - 1;
     wire[7:0] index2 = index[15:8] - 1;
     
-    assign endflag = endflag1;
-    assign result = result1;
+    assign end_flag = endflag1;
+    assign answer = result1;
 
-    always @(posedge clk or posedge enable) begin
+    always @(posedge clk or posedge en) begin
         index <= 5'd32 << STATE;
-        if (enable == 0) begin
+        if (en == 0) begin
             STATE <= 5'd0;
             endflag1 <= 0;
             result1 <= 256'b0;

@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-//’Pƒ‚ÈMM‚ÌƒVƒ~ƒ…ƒŒ[ƒVƒ‡ƒ“
+//ï¿½Pï¿½ï¿½ï¿½ï¿½MMï¿½ÌƒVï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½
 module sim_MM();
 
     reg [255:0] x;
@@ -31,7 +31,7 @@ module sim_MM();
     reg rstn;
     wire end_flag;
     
-   MM_func uut(
+   MM uut(
         .multiplier(x),
         .multiplicand(y),
         .result(z),
@@ -84,7 +84,7 @@ initial begin
      rstn = 1;
      #400;
            
-       $finish;
+    $finish;
     end
 endmodule
 

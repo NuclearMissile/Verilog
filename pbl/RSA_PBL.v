@@ -308,7 +308,7 @@ module Slave(input clk,input en,input[255:0] modulos,input[31:0] mp,
         wire[255:0] answer_next = data6[287:32];
         assign endflag = endflag_kari;
         assign answer = answer1;
-           always@(posedge clk )begin
+           always@(posedge clk)begin
               if(en == 0)begin //wait start signal from RSA_PBL
                   STAT<=5'd0;        
                   endflag_kari <= 0;
