@@ -22,7 +22,7 @@ module RSA_PBL(
                .multiplicand(answer),
                .endflag(Slave_endflag),.answer(outdata),.pow_bit(pow_bit));
  always@(posedge clk) begin
-     if(rstn == 0) begin //initial set
+     if(rstn == 0) begin //inilltial set
          state <= 6'd0;
          en <= 0;
          answer <= 256'h212ba4f27ffffff5a2c62effffffffcdb939ffffffffff8a15ffffffffffff8e; //�����l�ԈႦ��
