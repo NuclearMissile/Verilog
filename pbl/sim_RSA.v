@@ -19,19 +19,17 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module sim_RSA(
-
-    );
+module sim_RSA();
  
-    reg clk,rstn;
-    reg [31:0] pow;
-    reg [255:0] in_data;
+    reg clk, rstn;
+    reg[31:0] pow;
+    reg[255:0] in_data;
     reg[255:0] modulos;
     reg[31:0] mp;
-    wire [255:0] finalans;
-    wire Master_end;
+    wire[255:0] finalans;
+    wire end_flag;
     
-    RSA_PBL RSA (
+    RSA2 uut (
         .clk(clk),
         .rstn(rstn),
         .pow(pow),
@@ -39,10 +37,8 @@ module sim_RSA(
         .modulos(modulos),
         .mp(mp),
         .outdata(finalans),
-        .end_flag(Master_end)
+        .end_flag(end_flag)
     );
-    
-
            
     always #(1) clk = ~clk;
            
@@ -56,7 +52,7 @@ module sim_RSA(
         //in_3  = 256'h193c25d2ffffffdd73e9f1ffffffff58696bfffffffffe76f3fffffffffffe84;
         modulos  = 256'h2523648240000001ba344d80000000086121000000000013a700000000000013;
         mp =  32'hd79435e5;
-               
+        //1906b879b3f...     
         #5;
         rstn = 1'b0;
         #10 

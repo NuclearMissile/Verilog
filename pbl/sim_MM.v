@@ -19,7 +19,6 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-//�P����MM�̃V�~�����[�V����
 module sim_MM();
 
     reg [255:0] x;
@@ -31,15 +30,16 @@ module sim_MM();
     reg rstn;
     wire end_flag;
     
-   MM uut(
-        .multiplier(x),
+   MM2 uut(
+        .indata(x),
         .multiplicand(y),
-        .result(z),
-        .modulus(p),
+        .answer(z),
+        .modulos(p),
         .mp(pp),
         .clk(clk),
-        .rstn(rstn),
-        .end_flag(end_flag)
+        .en(rstn),
+        .endflag(end_flag),
+        .pow_bit(1'b1)
     );
     
 
@@ -82,9 +82,9 @@ initial begin
      // Wait 100 ns for global reset to finish
      #100;
      rstn = 1;
-     #400;
+     #600;
            
-    $finish;
+     $finish;
     end
 endmodule
 
